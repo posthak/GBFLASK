@@ -14,7 +14,7 @@ import time
 async def download(url):
     async with aiohttp.ClientSession() as session:
         async with session.get(url, ssl=False) as response:
-            filename = url.strip().split('/')[-1].strip()
+            filename = os.path.basename(url)
             f = await aiofiles.open(filename, mode='wb')
             await f.write(await response.read())
             await f.close()
