@@ -1,3 +1,4 @@
+
 import logging
 from pydantic import BaseModel
 from fastapi import FastAPI
@@ -26,7 +27,6 @@ async def read_task(task_id: int):
             logger.info(f'Get task list on task_id = {task_id}.')
             return task
     logger.info('No task')
-    return
 
 @app.post("/tasks/")
 async def create_task(task: Task):
@@ -40,18 +40,18 @@ async def create_task(task: Task):
 
 @app.put("/tasks/{task_id}")
 async def update_task(task_id: int, upd_task: Task):
-    for index, value in enumerate(tasks_list):
+    for value in tasks_list:
         if value["id"] == task_id:
-            tasks_list[index].update(upd_task.dict())
+            tasks_list[tasks_list.index(value)].update(upd_task.dict())
             logger.info(f'Отработал PUT запрос для task id = {task_id}.')
             return upd_task
 
 @app.delete("/tasks/{task_id}")
 async def delete_task(task_id: int):
-    for index, value in enumerate(tasks_list):
+    for value in tasks_list:
         if value["id"] == task_id:
             logger.info(f'Отработал DELETE запрос для task id = {task_id}.')
-            return tasks_list.pop(index)
+            return tasks_list.pop(tasks_list.index(value))
 
 
 
