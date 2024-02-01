@@ -41,4 +41,3 @@ if __name__ == '__main__':
 
 # задать список URL-адресов через аргументы командной строки
 # python3 HW4/process_001.py https://burst.shopifycdn.com/photos/full-blue-moon.jpg https://s.studiobinder.com/wp-content/uploads/2021/01/Best-Black-and-white-pictures.jpg https://ssl.robocup.org/wp-content/uploads/2021/12/20160629-IMG_0283_1.jpg
-
